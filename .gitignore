@@ -1,0 +1,7 @@
+# Ignore compiler output
+/WinDebug
+/WinRel
+
+# Ignore Visual C++ files
+*.aps
+*.vcp
