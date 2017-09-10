@@ -65,7 +65,8 @@ BSC32=bscmake.exe
 BSC32_FLAGS=/nologo /o$(OUTDIR)/"Win32sApp.bsc" 
 BSC32_SBRS= \
 	$(INTDIR)/WinMain.sbr \
-	$(INTDIR)/Callbacks.sbr
+	$(INTDIR)/AboutDialog.sbr \
+	$(INTDIR)/MainWindow.sbr
 
 $(OUTDIR)/Win32sApp.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
@@ -84,7 +85,8 @@ DEF_FILE=
 LINK32_OBJS= \
 	$(INTDIR)/WinMain.obj \
 	$(INTDIR)/Resource.res \
-	$(INTDIR)/Callbacks.obj
+	$(INTDIR)/AboutDialog.obj \
+	$(INTDIR)/MainWindow.obj
 
 $(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -127,7 +129,8 @@ BSC32=bscmake.exe
 BSC32_FLAGS=/nologo /o$(OUTDIR)/"Win32sApp.bsc" 
 BSC32_SBRS= \
 	$(INTDIR)/WinMain.sbr \
-	$(INTDIR)/Callbacks.sbr
+	$(INTDIR)/AboutDialog.sbr \
+	$(INTDIR)/MainWindow.sbr
 
 $(OUTDIR)/Win32sApp.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
@@ -147,7 +150,8 @@ DEF_FILE=
 LINK32_OBJS= \
 	$(INTDIR)/WinMain.obj \
 	$(INTDIR)/Resource.res \
-	$(INTDIR)/Callbacks.obj
+	$(INTDIR)/AboutDialog.obj \
+	$(INTDIR)/MainWindow.obj
 
 $(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -173,7 +177,8 @@ $(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
 
 SOURCE=.\WinMain.c
 DEP_WINMA=\
-	.\Callbacks.h
+	.\Globals.h\
+	.\MainWindow.h
 
 $(INTDIR)/WinMain.obj :  $(SOURCE)  $(DEP_WINMA) $(INTDIR)
 
@@ -192,11 +197,24 @@ $(INTDIR)/Resource.res :  $(SOURCE)  $(DEP_RESOU) $(INTDIR)
 ################################################################################
 # Begin Source File
 
-SOURCE=.\Callbacks.c
-DEP_CALLB=\
-	.\Callbacks.h
+SOURCE=.\AboutDialog.c
+DEP_ABOUT=\
+	.\AboutDialog.h\
+	.\Globals.h
 
-$(INTDIR)/Callbacks.obj :  $(SOURCE)  $(DEP_CALLB) $(INTDIR)
+$(INTDIR)/AboutDialog.obj :  $(SOURCE)  $(DEP_ABOUT) $(INTDIR)
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\MainWindow.c
+DEP_MAINW=\
+	.\AboutDialog.h\
+	.\Globals.h\
+	.\MainWindow.h
+
+$(INTDIR)/MainWindow.obj :  $(SOURCE)  $(DEP_MAINW) $(INTDIR)
 
 # End Source File
 # End Group
