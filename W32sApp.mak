@@ -13,7 +13,7 @@ CFG=Win32 Debug
 !MESSAGE You can specify a configuration when running NMAKE on this makefile
 !MESSAGE by defining the macro CFG on the command line.  For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "Win32sApp.mak" CFG="Win32 Debug"
+!MESSAGE NMAKE /f "W32sApp.mak" CFG="Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
@@ -43,7 +43,7 @@ RSC=rc.exe
 OUTDIR=.\WinRel
 INTDIR=.\WinRel
 
-ALL : $(OUTDIR)/Win32sApp.exe $(OUTDIR)/Win32sApp.bsc
+ALL : $(OUTDIR)/W32sApp.exe $(OUTDIR)/W32sApp.bsc
 
 $(OUTDIR) : 
     if not exist $(OUTDIR)/nul mkdir $(OUTDIR)
@@ -54,7 +54,7 @@ MTL_PROJ=/nologo /D "NDEBUG" /win32
 # ADD BASE CPP /nologo /W3 /GX /YX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /FR /c
 # ADD CPP /nologo /MD /W3 /GX /YX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /FR /c
 CPP_PROJ=/nologo /MD /W3 /GX /YX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS"\
- /FR$(INTDIR)/ /Fp$(OUTDIR)/"Win32sApp.pch" /Fo$(INTDIR)/ /c 
+ /FR$(INTDIR)/ /Fp$(OUTDIR)/"W32sApp.pch" /Fo$(INTDIR)/ /c 
 CPP_OBJS=.\WinRel/
 # ADD BASE RSC /l 0x809 /d "NDEBUG"
 # ADD RSC /l 0x809 /d "NDEBUG"
@@ -62,13 +62,13 @@ RSC_PROJ=/l 0x809 /fo$(INTDIR)/"Resource.res" /d "NDEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-BSC32_FLAGS=/nologo /o$(OUTDIR)/"Win32sApp.bsc" 
+BSC32_FLAGS=/nologo /o$(OUTDIR)/"W32sApp.bsc" 
 BSC32_SBRS= \
 	$(INTDIR)/WinMain.sbr \
-	$(INTDIR)/AboutDialog.sbr \
-	$(INTDIR)/MainWindow.sbr
+	$(INTDIR)/AboutDlg.sbr \
+	$(INTDIR)/MainWnd.sbr
 
-$(OUTDIR)/Win32sApp.bsc : $(OUTDIR)  $(BSC32_SBRS)
+$(OUTDIR)/W32sApp.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
   $(BSC32_FLAGS) $(BSC32_SBRS)
 <<
@@ -80,15 +80,15 @@ LINK32=link.exe
 LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
  advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib\
  odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no\
- /PDB:$(OUTDIR)/"Win32sApp.pdb" /MACHINE:I386 /OUT:$(OUTDIR)/"Win32sApp.exe" 
+ /PDB:$(OUTDIR)/"W32sApp.pdb" /MACHINE:I386 /OUT:$(OUTDIR)/"W32sApp.exe" 
 DEF_FILE=
 LINK32_OBJS= \
 	$(INTDIR)/WinMain.obj \
 	$(INTDIR)/Resource.res \
-	$(INTDIR)/AboutDialog.obj \
-	$(INTDIR)/MainWindow.obj
+	$(INTDIR)/AboutDlg.obj \
+	$(INTDIR)/MainWnd.obj
 
-$(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
+$(OUTDIR)/W32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -106,7 +106,7 @@ $(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
 OUTDIR=.\WinDebug
 INTDIR=.\WinDebug
 
-ALL : $(OUTDIR)/Win32sApp.exe $(OUTDIR)/Win32sApp.bsc
+ALL : $(OUTDIR)/W32sApp.exe $(OUTDIR)/W32sApp.bsc
 
 $(OUTDIR) : 
     if not exist $(OUTDIR)/nul mkdir $(OUTDIR)
@@ -117,8 +117,8 @@ MTL_PROJ=/nologo /D "_DEBUG" /win32
 # ADD BASE CPP /nologo /W3 /GX /Zi /YX /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /FR /c
 # ADD CPP /nologo /MD /W3 /GX /Zi /YX /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /FR /c
 CPP_PROJ=/nologo /MD /W3 /GX /Zi /YX /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS"\
- /FR$(INTDIR)/ /Fp$(OUTDIR)/"Win32sApp.pch" /Fo$(INTDIR)/\
- /Fd$(OUTDIR)/"Win32sApp.pdb" /c 
+ /FR$(INTDIR)/ /Fp$(OUTDIR)/"W32sApp.pch" /Fo$(INTDIR)/\
+ /Fd$(OUTDIR)/"W32sApp.pdb" /c 
 CPP_OBJS=.\WinDebug/
 # ADD BASE RSC /l 0x809 /d "_DEBUG"
 # ADD RSC /l 0x809 /d "_DEBUG"
@@ -126,13 +126,13 @@ RSC_PROJ=/l 0x809 /fo$(INTDIR)/"Resource.res" /d "_DEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-BSC32_FLAGS=/nologo /o$(OUTDIR)/"Win32sApp.bsc" 
+BSC32_FLAGS=/nologo /o$(OUTDIR)/"W32sApp.bsc" 
 BSC32_SBRS= \
 	$(INTDIR)/WinMain.sbr \
-	$(INTDIR)/AboutDialog.sbr \
-	$(INTDIR)/MainWindow.sbr
+	$(INTDIR)/AboutDlg.sbr \
+	$(INTDIR)/MainWnd.sbr
 
-$(OUTDIR)/Win32sApp.bsc : $(OUTDIR)  $(BSC32_SBRS)
+$(OUTDIR)/W32sApp.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
   $(BSC32_FLAGS) $(BSC32_SBRS)
 <<
@@ -144,16 +144,15 @@ LINK32=link.exe
 LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
  advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib\
  odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:yes\
- /PDB:$(OUTDIR)/"Win32sApp.pdb" /DEBUG /MACHINE:I386\
- /OUT:$(OUTDIR)/"Win32sApp.exe" 
+ /PDB:$(OUTDIR)/"W32sApp.pdb" /DEBUG /MACHINE:I386 /OUT:$(OUTDIR)/"W32sApp.exe" 
 DEF_FILE=
 LINK32_OBJS= \
 	$(INTDIR)/WinMain.obj \
 	$(INTDIR)/Resource.res \
-	$(INTDIR)/AboutDialog.obj \
-	$(INTDIR)/MainWindow.obj
+	$(INTDIR)/AboutDlg.obj \
+	$(INTDIR)/MainWnd.obj
 
-$(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
+$(OUTDIR)/W32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -178,7 +177,7 @@ $(OUTDIR)/Win32sApp.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
 SOURCE=.\WinMain.c
 DEP_WINMA=\
 	.\Globals.h\
-	.\MainWindow.h
+	.\MainWnd.h
 
 $(INTDIR)/WinMain.obj :  $(SOURCE)  $(DEP_WINMA) $(INTDIR)
 
@@ -188,7 +187,7 @@ $(INTDIR)/WinMain.obj :  $(SOURCE)  $(DEP_WINMA) $(INTDIR)
 
 SOURCE=.\Resource.rc
 DEP_RESOU=\
-	.\Application.ico
+	.\App.ico
 
 $(INTDIR)/Resource.res :  $(SOURCE)  $(DEP_RESOU) $(INTDIR)
    $(RSC) $(RSC_PROJ)  $(SOURCE) 
@@ -197,24 +196,24 @@ $(INTDIR)/Resource.res :  $(SOURCE)  $(DEP_RESOU) $(INTDIR)
 ################################################################################
 # Begin Source File
 
-SOURCE=.\AboutDialog.c
+SOURCE=.\AboutDlg.c
 DEP_ABOUT=\
-	.\AboutDialog.h\
+	.\AboutDlg.h\
 	.\Globals.h
 
-$(INTDIR)/AboutDialog.obj :  $(SOURCE)  $(DEP_ABOUT) $(INTDIR)
+$(INTDIR)/AboutDlg.obj :  $(SOURCE)  $(DEP_ABOUT) $(INTDIR)
 
 # End Source File
 ################################################################################
 # Begin Source File
 
-SOURCE=.\MainWindow.c
+SOURCE=.\MainWnd.c
 DEP_MAINW=\
-	.\AboutDialog.h\
+	.\AboutDlg.h\
 	.\Globals.h\
-	.\MainWindow.h
+	.\MainWnd.h
 
-$(INTDIR)/MainWindow.obj :  $(SOURCE)  $(DEP_MAINW) $(INTDIR)
+$(INTDIR)/MainWnd.obj :  $(SOURCE)  $(DEP_MAINW) $(INTDIR)
 
 # End Source File
 # End Group

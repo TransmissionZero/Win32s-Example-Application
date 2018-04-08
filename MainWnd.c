@@ -1,6 +1,6 @@
-#include "AboutDialog.h"
+#include "AboutDlg.h"
 #include "Globals.h"
-#include "MainWindow.h"
+#include "MainWnd.h"
 #include "Resource.h"
 
 /* Main window class and title */

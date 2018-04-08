@@ -1,6 +1,6 @@
 #include <windows.h>
 #include "Globals.h"
-#include "MainWindow.h"
+#include "MainWnd.h"
 #include "Resource.h"
 
 /* Global instance handle */

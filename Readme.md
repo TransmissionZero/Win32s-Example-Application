@@ -34,8 +34,8 @@ to the %LIB% environment variable. Once the environment is configured, type one 
 debug or release build):
 
 ```
-nmake /f Win32sApp.mak "CFG=Win32 Debug"
-nmake /f Win32sApp.mak "CFG=Win32 Release"
+nmake /f W32sApp.mak "CFG=Win32 Debug"
+nmake /f W32sApp.mak "CFG=Win32 Release"
 ```
 
 Building from the command line works with many other versions of Visual C++ / Visual Studio too, but you may get

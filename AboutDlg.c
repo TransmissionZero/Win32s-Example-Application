@@ -1,4 +1,4 @@
-#include "AboutDialog.h"
+#include "AboutDlg.h"
 #include "Globals.h"
 #include "Resource.h"
 
